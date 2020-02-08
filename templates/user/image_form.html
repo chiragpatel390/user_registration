@@ -1,0 +1,52 @@
+
+{% extends 'user/base.html' %}
+
+{% block title %}
+
+  Images
+
+{% endblock %}
+
+{% block content %}
+
+    <script>
+    $(document).ready(function() {
+        $('#addURL').click( function (){
+            var url = '<div class="form-group"><label>Url:</label><input type="url" name="url" maxlength="200" required=""></div>'
+            $('.fields').append(url)
+        });
+    });
+    </script>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <div class="container">
+            Hello <b>{{request.user}}</b> !
+            <a type="button" class="btn btn-primary float-right" href="{% url 'logout' %}">LogOut</a>
+        </div>
+    {% endif %}
+    <br>
+    <button class="btn btn-primary" id="addURL">Add new URL</button><br><br>
+
+    <div class="panel-body">
+
+        <form method="post">{% csrf_token %}
+            <div class="fields">
+            <div class="form-group">
+                {{ form.url.label_tag }} {{ form.url }}
+                {% if form.url.errors %}{{ form.url.errors }}{% endif %}
+            </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn pull-right" id="submit">Submit</button>
+
+        </form>
+
+    </div>
+{% endblock %}

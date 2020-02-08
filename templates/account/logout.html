@@ -1,0 +1,16 @@
+
+{% extends 'user/base.html' %}
+
+{% block title %}
+
+  Logout
+
+{% endblock %}
+
+{% block content %}
+    <form method="post">{% csrf_token %}
+        <p> Are you sure ? </p>
+        <a class="btn btn-primary btn-blue" href="{% url 'images' %}">Cancel</a>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Logout</button>
+    </form>
+{% endblock %}

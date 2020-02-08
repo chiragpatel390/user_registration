@@ -1,0 +1,37 @@
+
+{% extends 'user/base.html' %}
+
+{% block title %}
+
+  Login
+
+{% endblock %}
+
+{% block content %}
+
+    <br>
+    <div class="panel-body">
+        <form method="post">{% csrf_token %}
+
+            {% if form.non_field_errors %}
+                {{ form.non_field_errors }}
+            {% endif %}
+            <div class="form-group">
+                {{ form.login.label_tag }} {{ form.login }}
+                {% if form.login.errors %}{{ form.login.errors }}{% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.password.label_tag }} {{ form.password }}
+                {% if form.password.errors %}{{ form.password.errors }}{% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-primary btn pull-right" id="submit">Login</button>
+
+            <br><br>
+
+            <h5> <a href="{% url 'signup' %}">New User ? Register Here</a></h5>
+
+        </form>
+
+    </div>
+{% endblock %}

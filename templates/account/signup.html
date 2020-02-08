@@ -1,0 +1,50 @@
+{% extends 'user/base.html' %}
+
+{% block title %}
+
+  Registration
+
+{% endblock %}
+
+{% block content %}
+
+    <br>
+    <div class="panel-body">
+        <form method="post">{% csrf_token %}
+
+            {% if form.non_field_errors %}
+                {{ form.non_field_errors }}
+            {% endif %}
+            <div class="form-group">
+                {{ form.email.label_tag }} {{ form.email }}
+                {% if form.email.errors %}{{ form.email.errors }}{% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.username.label_tag }} {{ form.username }}
+                {% if form.username.errors %}{{ form.username.errors }}{% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.first_name.label_tag }} {{ form.first_name }}
+                {% if form.first_name.errors %}{{ form.first_name.errors }}{% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.last_name.label_tag }} {{ form.last_name }}
+                {% if form.last_name.errors %}{{ form.last_name.errors }}{% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.password1.label_tag }} {{ form.password1 }}
+                {% if form.password1.errors %}{{ form.password1.errors }}{% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.password2.label_tag }} {{ form.password2 }}
+                {% if form.password2.errors %}{{ form.password2.errors }}{% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-primary btn pull-right" id="submit">Submit</button>
+            <br><br>
+            <h5> <a href="{% url 'login' %}">Already User ? LogIn Here</a></h5>
+
+        </form>
+
+    </div>
+{% endblock %}
