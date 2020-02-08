@@ -14,4 +14,4 @@
 
 - after register with details user will get verification link in registered email account.
 - user can login after confirmation of verification link.
-- user can add multiple image urls from web and after submit all urls stored with compressed urls by signals.
+- user can add multiple image urls from web and after submit all urls stored with compressed urls by signals with using "http://tinyurl.com".
